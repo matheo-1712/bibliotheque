@@ -72,7 +72,7 @@ class Livre {
             return livreTrouve;
         }
         else {
-            console.log(`Aucun livre trouvé avec le titre "${titre}".`);
+            console.log(`Échec : Aucun livre trouvé avec le titre "${titre}".`);
         }
     }
 }

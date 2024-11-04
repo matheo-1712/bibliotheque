@@ -19,7 +19,7 @@ export class TransactionEmprunt {
         console.log(`Emprunteur : ${this.emprunteur.nom}`)
         console.log(`Nature de la transaction : ${this.action}`)
         console.log(`Date d'emprunt : ${this.date_action}`)
-        console.log(`Date de retour prévue : ${this.date_retour}`)
+        console.log(`Date de retour : ${this.date_retour}`)
     }
 
     static emprunterLivre(livre: Livre, emprunteur: Emprunteur): void {
