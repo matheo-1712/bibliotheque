@@ -17,18 +17,43 @@ class Emprunteur {
         this.email = email;
         this.livres = livres;
     }
-    ajouterEmprunt(livre, emprunteur) {
+    afficher() {
+        console.log(this.nom);
+        console.log(this.email);
+        console.log(this.livres);
+    }
+    static ajouterEmprunt(livre, emprunteur) {
         if (livre) {
             if (Livre_1.Livre.emprunterLivre(livre)) {
                 emprunteur.livres.push(livre);
                 console.log(`Le livre ${livre.titre} est emprunté avec succès !`);
+                return true;
             }
             else {
                 console.log(`Le livre ${livre.titre} n'est pas disponible pour l'emprunt`);
+                return false;
             }
         }
         else {
             console.log(`Le livre n'existe pas dans la collection de livre.`);
+            return false;
+        }
+    }
+    static retourEmprunt(livre, emprunteur) {
+        if (emprunteur.livres.includes(livre)) {
+            if (Livre_1.Livre.retourLivre(livre)) {
+                emprunteur.livres.splice(emprunteur.livres.indexOf(livre), 1);
+                console.log(`Le livre ${livre.titre} est retourné avec succès !`);
+                return true;
+            }
+            else {
+                console.log(`Le livre ${livre.titre} n'est pas disponible pour le retour`);
+                return false;
+            }
+        }
+        else {
+            console.log(`Le livre n'existe pas dans la collection de livre.`);
+            return false;
         }
     }
 }

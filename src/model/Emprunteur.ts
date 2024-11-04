@@ -14,17 +14,42 @@ export class Emprunteur {
         this.livres = livres;
     }
 
-    ajouterEmprunt(livre: Livre, emprunteur: Emprunteur): void {
+    afficher() {
+       console.log(this.nom)
+       console.log(this.email)
+       console.log(this.livres) 
+    }
+
+    static ajouterEmprunt(livre: Livre, emprunteur: Emprunteur): boolean {
         if (livre) {
             if (Livre.emprunterLivre(livre)) {
                 emprunteur.livres.push(livre)
                 console.log (`Le livre ${livre.titre} est emprunté avec succès !`)
+                return true
             } else {
                 console.log(`Le livre ${livre.titre} n'est pas disponible pour l'emprunt`)
+                return false
             }
 
         } else {
             console.log(`Le livre n'existe pas dans la collection de livre.`)
+            return false
+        }
+    }
+
+    static retourEmprunt(livre: Livre, emprunteur: Emprunteur): boolean {
+        if (emprunteur.livres.includes(livre)) {
+            if (Livre.retourLivre(livre)) {
+                emprunteur.livres.splice(emprunteur.livres.indexOf(livre), 1)
+                console.log (`Le livre ${livre.titre} est retourné avec succès !`)
+                return true
+            } else {
+                console.log(`Le livre ${livre.titre} n'est pas disponible pour le retour`)
+                return false
+            }
+        } else {
+            console.log(`Le livre n'existe pas dans la collection de livre.`)
+            return false
         }
     }
 

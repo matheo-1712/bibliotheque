@@ -51,13 +51,22 @@ export class Livre {
 
         if (etatLivre) {
             livre.disponible = false;
-            console.log(`Livre ${livre.titre} emprunté avec succès !`);
             return true
         } else {
-            console.log("Livre non disponible pour l'emprunt")
             return false
         }
 
+    }
+
+    static retourLivre(livre: Livre): boolean {
+        const etatLivre = livre.disponible;
+
+        if (!etatLivre) {
+            livre.disponible = true;
+            return true
+        } else {
+            return false
+        }
     }
 
     // Trouver un livre par titre

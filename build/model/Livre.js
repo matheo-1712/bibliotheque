@@ -47,11 +47,19 @@ class Livre {
         const etatLivre = livre.disponible;
         if (etatLivre) {
             livre.disponible = false;
-            console.log(`Livre ${livre.titre} emprunté avec succès !`);
             return true;
         }
         else {
-            console.log("Livre non disponible pour l'emprunt");
+            return false;
+        }
+    }
+    static retourLivre(livre) {
+        const etatLivre = livre.disponible;
+        if (!etatLivre) {
+            livre.disponible = true;
+            return true;
+        }
+        else {
             return false;
         }
     }
